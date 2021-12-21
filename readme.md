@@ -4,7 +4,7 @@ A CLI IDE for the brainf**ck coding language.
 
 The command line user interface was created with python and the prompt_toolkit library, and the interpreter was written in Rust for better performance, and ported as a library using the Pyo3 crate and Maturin.
 
-![screenshot](https://i.imgur.com/H8MGDqX.png | height=250)
+<img src="https://i.imgur.com/H8MGDqX.png" height="250"/>
 
 
 #TODO

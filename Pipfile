@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 maturin = "*"
 prompt-toolkit = "*"
+keyboard = "*"
 
 [dev-packages]
 

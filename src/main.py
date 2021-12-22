@@ -18,7 +18,6 @@ global idx
 global output_pane_size
 idx = 0
 output_pane_size = 20
-
 # Gets code from text buffer, parses it with interpy, sets the start time of the function, compiles with interpy, sets end time of the function and joins the output of the code with the elapsed time (end time - start time) #
 def run_code(n):
     code_input = text_buffer.text
@@ -58,3 +57,23 @@ output_buffer = Buffer()
 button = Button("Run", handler=run_code)
 text_area = BufferControl(buffer=output_buffer)
 
+# Initializing content in window #
+root_container = HSplit([
+    Window(content=BufferControl(text_buffer), wrap_lines=True, style="bg:#2F3248 fg:ansired", left_margins=[NumberedMargin()]),
+    Window(height=1, char="-"),
+    Window(content=text_area, height=output_pane_size, style="bg:#2F3248", wrap_lines=True)
+])
+
+# KEYBINDS #
+key_binds = KeyBindings()
+key_binds.add("c-r")(run_code)
+key_binds.add("c-q")(exit)
+key_binds.add("c-d")(run_debug)
+key_binds.add("c-e")(clear_buffers)
+key_binds.add("c-o")(enlarge_output_pane)
+
+# LAYOUT #
+layout = Layout(root_container)
+# APP INIT #
+application = Application(layout=layout, key_bindings=key_binds, full_screen=True, mouse_support=True)
+application.run()
